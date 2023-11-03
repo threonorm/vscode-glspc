@@ -87,7 +87,13 @@
           "type": "object",
           "default": {},
           "description": "Aditional info to pass to the LSP initialization."
-        }
+        },
+	"bsclsp": {
+	  "scope": "window",
+          "type": "object",
+          "default": {},
+          "description": "Config for bsclsp."
+	}
       }
     },
     "commands": [

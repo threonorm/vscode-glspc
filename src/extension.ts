@@ -26,19 +26,19 @@ let server: ChildProcess
 function startServer(context : ExtensionContext) {
   const config = workspace.getConfiguration("glspc")
   const serverCommand: string = config.get("serverCommand") ?? ""
-  const bscExe: string = config.get("bscExe")
 
   if (serverCommand) {
     const serverCommandArguments: string[] =
       config.get("serverCommandArguments") ?? []
+
+    const initializationOptions: Object =
+      config.get("initializationOptions") 
+
     const pathPrepend: string | undefined = config.get("pathPrepend")
 
     const outputChannel = window.createOutputChannel("glspc")
     outputChannel.appendLine("starting glspc...")
 
-    const config = {
-	    bscExe : bscExe,
-	    buildDir : ""}
     // eslint-disable-next-line @typescript-eslint/require-await
     const serverOptions: ServerOptions = async (): Promise<ChildProcess> => {
       const prepend = pathPrepend?.concat(":") ?? ""
@@ -56,9 +56,11 @@ function startServer(context : ExtensionContext) {
 
     const clientOptions: LanguageClientOptions = {
       documentSelector: ['bluespec'],
+      diagnosticCollectionName: "bsc-lsp",
+      initializationOptions,
+      bsclsp: initializationOptions
     }
 
-    outputChannel.appendLine("fdklsj")
     client = new LanguageClient(
       "glspc",
       "Generic LSP Client",
@@ -67,10 +69,6 @@ function startServer(context : ExtensionContext) {
     )
 
     void client.start();
-  )
-
-
-
   
   }
 }
