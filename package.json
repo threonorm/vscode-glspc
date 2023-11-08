@@ -52,6 +52,17 @@
     "onStartupFinished"
   ],
   "contributes": {
+    "languages": [{
+        "id": "bh",
+        "aliases": [
+          "Bluespec Classic",
+          "Bluespec Haskell"
+        ],
+        "extensions": [
+          ".bs"
+        ],
+        "configuration": "./language-configuration.json"
+      }],
     "configuration": {
       "type": "object",
       "title": "Generic LSP Client",
@@ -86,14 +97,8 @@
           "scope": "window",
           "type": "object",
           "default": {},
-          "description": "Aditional info to pass to the LSP initialization."
-        },
-	"bsclsp": {
-	  "scope": "window",
-          "type": "object",
-          "default": {},
-          "description": "Config for bsclsp."
-	}
+          "description": "Additional info to pass to the LSP initialization."
+        }
       }
     },
     "commands": [

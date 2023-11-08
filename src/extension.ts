@@ -37,7 +37,7 @@ function startServer(context : ExtensionContext) {
     const pathPrepend: string | undefined = config.get("pathPrepend")
 
     const outputChannel = window.createOutputChannel("glspc")
-    outputChannel.appendLine("starting glspc...")
+    outputChannel.appendLine("starting glspc...", initializationOptions)
 
     // eslint-disable-next-line @typescript-eslint/require-await
     const serverOptions: ServerOptions = async (): Promise<ChildProcess> => {
@@ -55,10 +55,9 @@ function startServer(context : ExtensionContext) {
     }
 
     const clientOptions: LanguageClientOptions = {
-      documentSelector: ['bluespec'],
+      documentSelector: ['bluespec', 'bh'],
       diagnosticCollectionName: "bsc-lsp",
       initializationOptions,
-      bsclsp: initializationOptions
     }
 
     client = new LanguageClient(
