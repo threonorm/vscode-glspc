@@ -50,7 +50,7 @@
     "typescript": "^5.2.2"
   },
   "activationEvents": [
-    "onStartupFinished"
+    "onFileSystem:bsclsp.yaml"
   ],
   "extensionKind": [
     "workspace"
@@ -68,29 +68,12 @@
           "editPresentation": "multilineText",
           "description": "The file path to the LSP server executable to start."
         },
-        "bsclsp.serverCommandArguments": {
-          "scope": "window",
-          "type": "array",
-          "default": [],
-          "description": "Arguments to pass to the LSP server executable."
-        },
-        "bsclsp.languageId": {
-          "scope": "window",
-          "type": "string",
-          "default": "",
-          "description": "The language id for which the server will be used"
-        },
-        "bsclsp.pathPrepend": {
-          "scope": "window",
-          "type": "string",
-          "default": "",
-          "editPresentation": "multilineText",
-          "description": "Prepend to the PATH when starting the LSP server executable"
-        },
         "bsclsp.initializationOptions": {
           "scope": "window",
           "type": "object",
-          "default": {},
+          "default": {
+        		"projectFile":"bsclsp.yaml"
+    	  },
           "description": "Additional info to pass to the LSP initialization."
         }
       }

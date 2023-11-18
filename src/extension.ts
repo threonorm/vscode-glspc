@@ -28,16 +28,13 @@ function startServer(context : ExtensionContext) {
   const serverCommand: string = config.get("serverCommand") ?? ""
 
   if (serverCommand) {
-    const serverCommandArguments: string[] =
-      config.get("serverCommandArguments") ?? []
+    const serverCommandArguments: string[] = []
 
     const initializationOptions: Object =
       config.get("initializationOptions") 
 
-    const pathPrepend: string | undefined = config.get("pathPrepend")
+    const pathPrepend:  undefined = config.get("pathPrepend")
 
-    const outputChannel = window.createOutputChannel("bsclsp")
-    outputChannel.appendLine("starting bsclsp...", initializationOptions)
 
     // eslint-disable-next-line @typescript-eslint/require-await
     const serverOptions: ServerOptions = async (): Promise<ChildProcess> => {
