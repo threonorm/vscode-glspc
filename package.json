@@ -1,12 +1,13 @@
 {
-  "name": "llllvvuu-glspc",
+  "name": "vscode-bsclsp",
   "version": "0.1.8",
-  "displayName": "Generic LSP Client",
-  "description": "Generic LSP Client for VS Code",
+  "displayName": "BSC LSP Client",
+  "description": "LSP Client for VS Code",
   "categories": [],
-  "repository": "https://github.com/llllvvuu/vscode-glspc",
-  "publisher": "llllvvuu",
+  "repository": "https://github.com/threonorm/vscode-bsclsp",
+  "publisher": "bthom",
   "contributors": [
+    "bthom",
     "llllvvuu",
     "torokati44",
     "ruilvo",
@@ -51,49 +52,42 @@
   "activationEvents": [
     "onStartupFinished"
   ],
+  "extensionKind": [
+    "workspace"
+  ],
   "contributes": {
-    "languages": [{
-        "id": "bh",
-        "aliases": [
-          "Bluespec Classic",
-          "Bluespec Haskell"
-        ],
-        "extensions": [
-          ".bs"
-        ],
-        "configuration": "./language-configuration.json"
-      }],
+    "languages": [],
     "configuration": {
       "type": "object",
-      "title": "Generic LSP Client",
+      "title": "BSC LSP Client",
       "properties": {
-        "glspc.serverCommand": {
+        "bsclsp.serverCommand": {
           "scope": "window",
           "type": "string",
           "default": "",
           "editPresentation": "multilineText",
           "description": "The file path to the LSP server executable to start."
         },
-        "glspc.serverCommandArguments": {
+        "bsclsp.serverCommandArguments": {
           "scope": "window",
           "type": "array",
           "default": [],
           "description": "Arguments to pass to the LSP server executable."
         },
-        "glspc.languageId": {
+        "bsclsp.languageId": {
           "scope": "window",
           "type": "string",
           "default": "",
           "description": "The language id for which the server will be used"
         },
-        "glspc.pathPrepend": {
+        "bsclsp.pathPrepend": {
           "scope": "window",
           "type": "string",
           "default": "",
           "editPresentation": "multilineText",
           "description": "Prepend to the PATH when starting the LSP server executable"
         },
-        "glspc.initializationOptions": {
+        "bsclsp.initializationOptions": {
           "scope": "window",
           "type": "object",
           "default": {},
@@ -103,8 +97,8 @@
     },
     "commands": [
       {
-        "command": "glspc.restartServer",
-        "title": "Generic LSP Client: Restart server"
+        "command": "bsclsp.restartServer",
+        "title": "BSC LSP Client: Restart server"
       }
     ]
   }

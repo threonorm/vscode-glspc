@@ -24,7 +24,7 @@ let client: LanguageClient
 let server: ChildProcess
 
 function startServer(context : ExtensionContext) {
-  const config = workspace.getConfiguration("glspc")
+  const config = workspace.getConfiguration("bsclsp")
   const serverCommand: string = config.get("serverCommand") ?? ""
 
   if (serverCommand) {
@@ -36,8 +36,8 @@ function startServer(context : ExtensionContext) {
 
     const pathPrepend: string | undefined = config.get("pathPrepend")
 
-    const outputChannel = window.createOutputChannel("glspc")
-    outputChannel.appendLine("starting glspc...", initializationOptions)
+    const outputChannel = window.createOutputChannel("bsclsp")
+    outputChannel.appendLine("starting bsclsp...", initializationOptions)
 
     // eslint-disable-next-line @typescript-eslint/require-await
     const serverOptions: ServerOptions = async (): Promise<ChildProcess> => {
@@ -61,8 +61,8 @@ function startServer(context : ExtensionContext) {
     }
 
     client = new LanguageClient(
-      "glspc",
-      "Generic LSP Client",
+      "bsclsp",
+      "BSC LSP Client",
       serverOptions,
       clientOptions,
     )
@@ -82,7 +82,7 @@ export function activate(context: ExtensionContext) {
 
 
   context.subscriptions.push(
-    commands.registerCommand("glspc.restartServer", async () => {
+    commands.registerCommand("bsclsp.restartServer", async () => {
       await killServer()
       startServer()
     }),
