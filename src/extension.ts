@@ -30,15 +30,12 @@ function startServer(context : ExtensionContext) {
   if (serverCommand) {
     const serverCommandArguments: string[] = []
 
-    const initializationOptions: Object =
+    const initializationOptions: Object | undefined=
       config.get("initializationOptions") 
-
-    const pathPrepend:  undefined = config.get("pathPrepend")
-
 
     // eslint-disable-next-line @typescript-eslint/require-await
     const serverOptions: ServerOptions = async (): Promise<ChildProcess> => {
-      const prepend = pathPrepend?.concat(":") ?? ""
+      const prepend = ""
       server = spawn(serverCommand, serverCommandArguments, {
         env: {
           ...process.env,

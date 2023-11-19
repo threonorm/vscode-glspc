@@ -50,7 +50,7 @@
     "typescript": "^5.2.2"
   },
   "activationEvents": [
-    "onFileSystem:bsclsp.yaml"
+    "workspaceContains:bsclsp.yaml"
   ],
   "extensionKind": [
     "workspace"
